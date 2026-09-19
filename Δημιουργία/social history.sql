@@ -1,0 +1,9 @@
+CREATE TABLE SOCIAL_HISTORY (
+    social_history_id INT AUTO_INCREMENT,
+    patient_id INT NOT NULL,
+    generated_narr TEXT NULL,
+    dated_recorded DATETIME NULL,
+    note TEXT NULL,
+    CONSTRAINT PK_SOCIAL_HISTORY PRIMARY KEY (social_history_id),
+    CONSTRAINT FK_SOC_HIST_PATIENT FOREIGN KEY (patient_id) REFERENCES PATIENT(patient_id) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;

@@ -1,0 +1,23 @@
+CREATE TABLE ORGANISATION (
+    org_id INT AUTO_INCREMENT,
+    org_identifier VARCHAR(100) NULL,
+    org_name VARCHAR(255) NOT NULL,
+    org_type_code VARCHAR(100) NULL,
+    org_type_display VARCHAR(255) NULL,
+    parent_org_id INT NULL,
+    addr_street VARCHAR(150) NULL,
+    addr_num VARCHAR(20) NULL,
+    addr_postbox VARCHAR(50) NULL,
+    addr_city VARCHAR(100) NULL,
+    addr_zip VARCHAR(20) NULL,
+    addr_country VARCHAR(100) NULL,
+    addr_display_text VARCHAR(255) NULL,
+    addr_use VARCHAR(50) NULL,
+    addr_type VARCHAR(50) NULL,
+    phone_contact VARCHAR(50) NULL,
+    phone_use VARCHAR(50) NULL,
+    email_contact VARCHAR(100) NULL,
+    email_use VARCHAR(50) NULL,
+    CONSTRAINT PK_ORGANISATION PRIMARY KEY (org_id),
+    CONSTRAINT FK_ORGANISATION_PARENT FOREIGN KEY (parent_org_id) REFERENCES ORGANISATION(org_id) ON DELETE SET NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;

@@ -1,0 +1,14 @@
+CREATE TABLE PRESCRIPTION_ATTACHMENTS (
+    attachment_id INT AUTO_INCREMENT,
+    prescription_id INT NOT NULL,
+    content_type VARCHAR(100) NULL,
+    language_code VARCHAR(20) NULL,
+    language_display VARCHAR(100) NULL,
+    file_data LONGBLOB NULL,
+    file_url VARCHAR(500) NULL,
+    file_size INT NULL,
+    title VARCHAR(255) NULL,
+    created_at DATETIME NULL,
+    CONSTRAINT PK_PRESCRIPTION_ATTACHMENTS PRIMARY KEY (attachment_id),
+    CONSTRAINT FK_PRESCR_ATT_PRESCRIPTION FOREIGN KEY (prescription_id) REFERENCES MEDICATION_PRESCRIPTION(prescription_id) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;

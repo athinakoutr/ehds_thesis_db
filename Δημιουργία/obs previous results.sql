@@ -1,0 +1,8 @@
+CREATE TABLE OBS_PREVIOUS_RESULTS (
+    current_obs_result_id INT NOT NULL,
+    previous_obs_result_id INT NOT NULL,
+    trend_type VARCHAR(100) NULL,
+    CONSTRAINT PK_OBS_PREVIOUS_RESULTS PRIMARY KEY (current_obs_result_id, previous_obs_result_id),
+    CONSTRAINT FK_OBS_PREV_CURRENT FOREIGN KEY (current_obs_result_id) REFERENCES OBSERVATION_RESULTS(obs_result_id) ON DELETE CASCADE,
+    CONSTRAINT FK_OBS_PREV_PREVIOUS FOREIGN KEY (previous_obs_result_id) REFERENCES OBSERVATION_RESULTS(obs_result_id) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;

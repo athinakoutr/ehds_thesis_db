@@ -1,0 +1,21 @@
+CREATE TABLE HEALTH_CONDITIONS (
+    condition_id INT AUTO_INCREMENT,
+    statement_id INT NOT NULL,
+    clinical_status VARCHAR(50) NULL,
+    verification_status VARCHAR(50) NULL,
+    condition_code VARCHAR(100) NULL,
+    condition_display VARCHAR(255) NULL,
+    severity VARCHAR(50) NULL,
+    onset_date DATETIME NULL,
+    end_date DATETIME NULL,
+    res_circumstances TEXT NULL,
+    body_site_id INT NULL,
+    stage VARCHAR(100) NULL,
+    hp_id INT NULL,
+    external_resource VARCHAR(255) NULL,
+    category VARCHAR(100) NULL,
+    CONSTRAINT PK_HEALTH_CONDITIONS PRIMARY KEY (condition_id),
+    CONSTRAINT FK_HEALTH_COND_STATEMENT FOREIGN KEY (statement_id) REFERENCES CLINICAL_STATEMENT(statement_id) ON DELETE CASCADE,
+    CONSTRAINT FK_HEALTH_COND_BODY_SITE FOREIGN KEY (body_site_id) REFERENCES BODY_STRUCTURE(body_site_id) ON DELETE SET NULL,
+    CONSTRAINT FK_HEALTH_COND_HP FOREIGN KEY (hp_id) REFERENCES HEALTH_PROFESSIONAL(hp_id) ON DELETE SET NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;

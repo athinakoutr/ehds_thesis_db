@@ -1,0 +1,22 @@
+CREATE TABLE LOCATION (
+    loc_id INT AUTO_INCREMENT,
+    loc_identifier VARCHAR(100) NULL,
+    loc_name VARCHAR(255) NOT NULL,
+    loc_description TEXT NULL,
+    org_id INT NOT NULL,
+    parent_loc_id INT NULL,
+    loc_type_code VARCHAR(100) NULL,
+    loc_type_display VARCHAR(255) NULL,
+    addr_street VARCHAR(150) NULL,
+    addr_num VARCHAR(20) NULL,
+    addr_postbox VARCHAR(50) NULL,
+    addr_city VARCHAR(100) NULL,
+    addr_zip VARCHAR(20) NULL,
+    addr_country VARCHAR(100) NULL,
+    addr_display_text VARCHAR(255) NULL,
+    addr_use VARCHAR(50) NULL,
+    addr_type VARCHAR(50) NULL,
+    CONSTRAINT PK_LOCATION PRIMARY KEY (loc_id),
+    CONSTRAINT FK_LOCATION_ORG FOREIGN KEY (org_id) REFERENCES ORGANISATION(org_id) ON DELETE RESTRICT,
+    CONSTRAINT FK_LOCATION_PARENT FOREIGN KEY (parent_loc_id) REFERENCES LOCATION(loc_id) ON DELETE SET NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;

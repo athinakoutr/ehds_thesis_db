@@ -1,0 +1,10 @@
+CREATE TABLE PATIENT_STORY (
+    patient_story_id INT AUTO_INCREMENT,
+    patient_id INT NOT NULL,
+    story_narr LONGTEXT NULL,
+    date_recorded DATETIME NULL,
+    author_type VARCHAR(100) NULL,
+    note TEXT NULL,
+    CONSTRAINT PK_PATIENT_STORY PRIMARY KEY (patient_story_id),
+    CONSTRAINT FK_PAT_STORY_PATIENT FOREIGN KEY (patient_id) REFERENCES PATIENT(patient_id) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;

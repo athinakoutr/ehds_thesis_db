@@ -1,0 +1,8 @@
+CREATE TABLE TRAVEL_HISTORY (
+    travel_history_id INT AUTO_INCREMENT,
+    patient_id INT NOT NULL,
+    gen_narr TEXT NULL,
+    section_note TEXT NULL,
+    CONSTRAINT PK_TRAVEL_HISTORY PRIMARY KEY (travel_history_id),
+    CONSTRAINT FK_TRAVEL_HIST_PATIENT FOREIGN KEY (patient_id) REFERENCES PATIENT(patient_id) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;

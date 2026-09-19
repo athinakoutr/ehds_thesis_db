@@ -1,0 +1,33 @@
+CREATE TABLE MEDICAL_DEVICES_AND_IMPLANTS (
+    device_id INT AUTO_INCREMENT,
+    statement_id INT NOT NULL,
+    condition_id INT NULL,
+    procedure_id INT NULL,
+    obs_id INT NULL,
+    instance_identifier VARCHAR(100) NULL,
+    udi VARCHAR(255) NULL,
+    manufacturer VARCHAR(255) NULL,
+    manufacturer_date DATE NULL,
+    expiry_date DATE NULL,
+    lot_number VARCHAR(100) NULL,
+    serial_number VARCHAR(100) NULL,
+    name_value VARCHAR(255) NULL,
+    name_type VARCHAR(100) NULL,
+    model_number VARCHAR(100) NULL,
+    version VARCHAR(50) NULL,
+    type VARCHAR(100) NULL,
+    period_of_use_start DATETIME NULL,
+    period_of_use_end DATETIME NULL,
+    use_note TEXT NULL,
+    status VARCHAR(50) NULL,
+    body_site_id INT NULL,
+    CONSTRAINT PK_MEDICAL_DEVICES_AND_IMPLANTS PRIMARY KEY (device_id),
+    CONSTRAINT FK_DEV_STATEMENT FOREIGN KEY (statement_id) REFERENCES CLINICAL_STATEMENT(statement_id) ON DELETE CASCADE,
+    CONSTRAINT FK_DEV_CONDITION FOREIGN KEY (condition_id) REFERENCES HEALTH_CONDITIONS(condition_id) ON DELETE SET NULL,
+    CONSTRAINT FK_DEV_OBS FOREIGN KEY (obs_id) REFERENCES OBSERVATION_RESULTS(obs_result_id) ON DELETE SET NULL,
+    CONSTRAINT FK_DEV_BODY_SITE FOREIGN KEY (body_site_id) REFERENCES BODY_STRUCTURE(body_site_id) ON DELETE SET NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+ALTER TABLE MEDICAL_DEVICES_AND_IMPLANTS
+ADD CONSTRAINT FK_DEV_PROCEDURE 
+FOREIGN KEY (procedure_id) REFERENCES PROCEDURES(procedure_id) ON DELETE SET NULL;

@@ -1,0 +1,11 @@
+CREATE TABLE IMAGING_STUDY_INSTANCE (
+    instance_id INT AUTO_INCREMENT,
+    series_id INT NOT NULL,
+    instance_title VARCHAR(255) NULL,
+    sop_instance_uid VARCHAR(128) NULL,
+    sop_class_uri VARCHAR(255) NULL,
+    instance_number INT NULL,
+    num_of_frames INT NULL,
+    CONSTRAINT PK_IMAGING_STUDY_INSTANCE PRIMARY KEY (instance_id),
+    CONSTRAINT FK_INSTANCE_SERIES FOREIGN KEY (series_id) REFERENCES IMAGING_STUDY_SERIES(series_id) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;

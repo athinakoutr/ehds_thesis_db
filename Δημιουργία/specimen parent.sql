@@ -1,0 +1,8 @@
+CREATE TABLE SPECIMEN_PARENT (
+    specimen_id INT NOT NULL,
+    parent_specimen_id INT NOT NULL,
+    relationship_type VARCHAR(100) NULL,
+    CONSTRAINT PK_SPECIMEN_PARENT PRIMARY KEY (specimen_id, parent_specimen_id),
+    CONSTRAINT FK_SPEC_PAR_CHILD FOREIGN KEY (specimen_id) REFERENCES SPECIMEN(specimen_id) ON DELETE CASCADE,
+    CONSTRAINT FK_SPEC_PAR_PARENT FOREIGN KEY (parent_specimen_id) REFERENCES SPECIMEN(specimen_id) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;

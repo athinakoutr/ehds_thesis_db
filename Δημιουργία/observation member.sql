@@ -1,0 +1,7 @@
+CREATE TABLE OBSERVATION_MEMBER (
+    parent_obs_result_id INT NOT NULL,
+    member_obs_result_id INT NOT NULL,
+    CONSTRAINT PK_OBSERVATION_MEMBER PRIMARY KEY (parent_obs_result_id, member_obs_result_id),
+    CONSTRAINT FK_OBS_MEM_PARENT FOREIGN KEY (parent_obs_result_id) REFERENCES OBSERVATION_RESULTS(obs_result_id) ON DELETE CASCADE,
+    CONSTRAINT FK_OBS_MEM_CHILD FOREIGN KEY (member_obs_result_id) REFERENCES OBSERVATION_RESULTS(obs_result_id) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
